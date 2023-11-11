@@ -1,38 +1,53 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using MimeKit;
 using SendEmail.Context;
-using System.Net.Mail;
+using SendEmail.Model;
 
 namespace SendEmail.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MainController
+    public class MainController : ControllerBase
     {
         public readonly AppDbContext _appDbContext;
-
-        public MainController(AppDbContext appDbContext)
+        //public readonly ISmtpClient _smtpClient;
+        public MainController(AppDbContext appDbContext)//, ISmtpClient smtpClient)
         {
             _appDbContext = appDbContext;
+            //_smtpClient = smtpClient;
             //_service = service;
         }
 
-        [HttpPost]
-        public Task<IActionResult> CreateEmail(int id, string emailSender, string emailReceiver, string emailTitle, string emailBody)
+        [HttpGet]
+        public async Task<IActionResult> CreateEmail()
         {
-            SmtpClient smtpClient = new SmtpClient("mail.MyWebsiteDomainName.com", 25);
+            EmailModel emailModel = new EmailModel
+            {
+                EmailSender = "",
+                EmailBody = "Só pra você saber que eu enviei esse email via Desenvolvimento Web (foi pro spam provavelmente)",
+                EmailSubject = "Email enviado por programação",
+                EmailReceiver = "@gmail.com",
+                EmailPassword = ""
+            };
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("", emailModel.EmailSender));
+            message.To.Add(new MailboxAddress("", emailModel.EmailReceiver));
+            message.Subject = emailModel.EmailSubject;
+            message.Body = new TextPart("plain")
+            {
+                Text = emailModel.EmailBody
+            };
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.office365.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
+                client.Authenticate(emailModel.EmailSender, emailModel.EmailPassword);
+                client.Send(message);
+                client.Disconnect(true);
+            }
+            return Ok(new {success = true, data = emailModel});
 
-            //smtpClient.Credentials = new System.Net.NetworkCredential(emailSender, "myIDPassword");
-            smtpClient.UseDefaultCredentials = true; // uncomment if you don't want to use the network credentials
-            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtpClient.EnableSsl = true;
-            MailMessage mail = new MailMessage();
-
-            //Setting From , To and CC
-            mail.From = new MailAddress(emailSender, "Remetente");
-            mail.To.Add(new MailAddress(emailReceiver));
-            //mail.CC.Add(new MailAddress(""));
-
-            smtpClient.Send(mail);
         }
 
         

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using SendEmail.Model;
 
 namespace SendEmail.Context
 {
@@ -14,6 +15,7 @@ namespace SendEmail.Context
             : base(options) { }
 
         //Define Models here
+        public DbSet<EmailModel> Email { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
