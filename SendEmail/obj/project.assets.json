@@ -3624,11 +3624,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projetos-C#\\SendEmail\\SendEmail\\SendEmail.csproj",
+      "projectUniqueName": "C:\\Projetos-C#\\GitHub\\Emails\\SendEmail\\SendEmail.csproj",
       "projectName": "SendEmail",
-      "projectPath": "C:\\Projetos-C#\\SendEmail\\SendEmail\\SendEmail.csproj",
+      "projectPath": "C:\\Projetos-C#\\GitHub\\Emails\\SendEmail\\SendEmail.csproj",
       "packagesPath": "C:\\Users\\felip\\.nuget\\packages\\",
-      "outputPath": "C:\\Projetos-C#\\SendEmail\\SendEmail\\obj\\",
+      "outputPath": "C:\\Projetos-C#\\GitHub\\Emails\\SendEmail\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\felip\\AppData\\Roaming\\NuGet\\NuGet.Config",

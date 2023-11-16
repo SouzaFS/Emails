@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "toyJ0NWnQRLrhj/QB1twQXEOPJnoZE78c8+MnTlrx7v2O6OCxYp/Mex5+c6I88PIRFMYXoXgpaEt+Wyv5zcxrA==",
+  "dgSpecHash": "N3NDP+zDb1PTn5fNORGw5mGUVaDiK+XueuPADl5/E98qYWYDrRJKmmVeY3XcuH58YMe5R8SqchM037Bb+X//qQ==",
   "success": true,
-  "projectFilePath": "C:\\Projetos-C#\\SendEmail\\SendEmail\\SendEmail.csproj",
+  "projectFilePath": "C:\\Projetos-C#\\GitHub\\Emails\\SendEmail\\SendEmail.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\felip\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\felip\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
