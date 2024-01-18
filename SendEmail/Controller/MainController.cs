@@ -25,8 +25,8 @@ namespace SendEmail.Controller
         public async Task<IActionResult> CreateEmail(EmailDTO emailDTO)
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Felipera, o Dev Brabo", emailDTO.EmailSender));
-            message.To.Add(new MailboxAddress("Caiozão", emailDTO.EmailReceiver));
+            message.From.Add(new MailboxAddress("Sender", emailDTO.EmailSender));
+            message.To.Add(new MailboxAddress("Receiver", emailDTO.EmailReceiver));
             message.Subject = emailDTO.EmailSubject;
             message.Body = new TextPart("plain")
             {
