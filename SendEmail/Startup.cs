@@ -1,10 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using SendEmail.Context;
-using System;
-using System.ComponentModel;
+﻿using Microsoft.OpenApi.Models;
 
 namespace SendEmail
 {
@@ -25,7 +19,6 @@ namespace SendEmail
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyEmails", Version = "v1" });
             });
-            services.AddDbContext<AppDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("ServerConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
