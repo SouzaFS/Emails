@@ -1,4 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
+using SendEmail.Services;
+using SendEmail.Services.Interfaces;
 
 namespace SendEmail
 {
@@ -19,6 +21,8 @@ namespace SendEmail
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyEmails", Version = "v1" });
             });
+
+            services.AddScoped<IEmailService, EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
