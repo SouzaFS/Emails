@@ -19,8 +19,8 @@ namespace SendEmail.Services
         {
             var email = new Email()
             {
-                EmailSender = "dev.felipesouza@outlook.com",
-                EmailPassword = "Felipeffs99",
+                EmailSender = "email",
+                EmailPassword = "password",
                 EmailReceiver = user.UserEmail
             };
 
