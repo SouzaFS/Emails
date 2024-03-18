@@ -21,7 +21,15 @@ namespace SendEmail
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyEmails", Version = "v1" });
             });
-
+            services.AddCors(option =>
+            {
+                option.AddPolicy("MyPolicy", builder =>
+                {
+                    builder.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
+                });
+            });
             services.AddScoped<IEmailService, EmailService>();
         }
 
@@ -40,9 +48,11 @@ namespace SendEmail
             app.UseStaticFiles();
 
             app.UseHttpsRedirection();
+            app.UseCors("MyPolicy");
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => endpoints.MapControllers());
